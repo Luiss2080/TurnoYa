@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="docs/assets/logo.svg" alt="SocioFit" width="96" height="96"/>
+<img src="docs/assets/logo.svg" alt="TurnoYa" width="96" height="96"/>
 
-# SocioFit
+# TurnoYa
 
-**Control de membresías para gimnasios y academias, con carnet QR, vencimientos y recordatorios por WhatsApp. Offline-first, sin costos mensuales.**
+**Agenda de turnos para peluquerías, consultorios y talleres con recordatorios locales y confirmación por WhatsApp. Sin internet.**
 
 <p>
 <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white" alt="Expo"/>
@@ -22,12 +22,12 @@
 
 ## 🚀 Características
 
-- **Socios y planes**: alta de socios con foto, plan mensual/trimestral/anual y precio libre.
-- **Carnet QR**: cada socio tiene un QR para registrar asistencia en la puerta.
-- **Vencimientos**: panel con socios por vencer, vencidos y al día.
-- **Recordatorios locales**: notificaciones en el dispositivo, sin servidor.
-- **Cobro por WhatsApp**: mensaje de pago pre-llenado con un toque.
-- **Caja diaria**: pagos del día y resumen mensual.
+- **Agenda diaria y semanal** con horarios libres.
+- **Clientes y servicios** con duración y precio.
+- **Recordatorios locales** antes de cada turno.
+- **Confirmación por WhatsApp** pre-llenada.
+- **Evita choques** de horario automáticamente.
+- **Resumen** de turnos e ingresos del día.
 
 > Sin servidores, sin suscripciones y sin servicios de pago: todos los datos viven en el dispositivo (SQLite).
 
@@ -42,23 +42,23 @@
 
 ### Modelo de datos
 
-- `socios (id, nombre, telefono, foto, creado_en)`
-- `planes (id, nombre, dias, precio)`
-- `membresias (id, socio_id, plan_id, inicio, vence, pagado)`
-- `asistencias (id, socio_id, fecha_hora)`
+- `clientes (id, nombre, telefono)`
+- `servicios (id, nombre, minutos, precio)`
+- `turnos (id, cliente_id, servicio_id, inicio, estado)`
+- `horarios (id, dia_semana, desde, hasta)`
 
 ## 🗺️ Roadmap
 
 - [ ] 1. Estructura base y navegación
-- [ ] 2. Socios, planes y membresías
-- [ ] 3. Escaneo QR y asistencias
+- [ ] 2. Clientes y servicios
+- [ ] 3. Agenda y turnos
 - [ ] 4. Recordatorios y WhatsApp
-- [ ] 5. Respaldo/exportación local
+- [ ] 5. Reportes del día
 
 ## 📂 Estructura
 
 ```text
-SocioFit/
+TurnoYa/
 ├── app/            # Pantallas y rutas (Expo Router)
 ├── src/
 │   ├── db/         # Esquema y consultas SQLite
@@ -73,8 +73,8 @@ SocioFit/
 Requisitos: Node.js 20+ y la app Expo Go (o un emulador).
 
 ```bash
-git clone https://github.com/Luiss2080/SocioFit.git
-cd SocioFit
+git clone https://github.com/Luiss2080/TurnoYa.git
+cd TurnoYa
 npm install
 npx expo start
 ```
